@@ -72,24 +72,25 @@ if __name__ == "__main__":
     import pandas as pd
     csv_path =  Path(sys.argv[1])
     # TODO - If the input is json and not csv #Pass all as string
-    df = pd.read_csv(csv_path, nrows=1)
-    df = df.astype( {'account_length':'string',
-                'number_vmail_messages':'string',
-                 'total_day_calls':'string',
-                 'number_customer_service_calls':'string',
-                'total_day_minutes':'string',
-                'total_eve_calls':'string',
-                'total_day_charge': 'string',
-                'total_eve_minutes':'string',
-                'total_eve_charge':'string',
-                'total_night_minutes':'string',
-                'total_night_calls':'string',
-                 'total_night_charge':'string',
-                 'total_intl_minutes':'string',
-                 'total_intl_calls':'string',
-                 'total_intl_charge':'string'
-                } )
-    dicts = df.to_dict('records')
+    if str(csv_path).endswith('.csv'):
+        df = pd.read_csv(csv_path, nrows=1)
+        df = df.astype( {'account_length':'string',
+                    'number_vmail_messages':'string',
+                     'total_day_calls':'string',
+                     'number_customer_service_calls':'string',
+                    'total_day_minutes':'string',
+                    'total_eve_calls':'string',
+                    'total_day_charge': 'string',
+                    'total_eve_minutes':'string',
+                    'total_eve_charge':'string',
+                    'total_night_minutes':'string',
+                    'total_night_calls':'string',
+                     'total_night_charge':'string',
+                     'total_intl_minutes':'string',
+                     'total_intl_calls':'string',
+                     'total_intl_charge':'string'
+                    } )
+        dicts = df.to_dict('records')
     
     result = predict_tabular_classification_sample(
     project="189737161361",
