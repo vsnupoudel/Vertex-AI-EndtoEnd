@@ -71,6 +71,7 @@ if __name__ == "__main__":
     from pathlib import Path 
     import pandas as pd
     csv_path =  Path(sys.argv[1])
+    # TODO - If the input is json and not csv #Pass all as string
     df = pd.read_csv(csv_path, nrows=1)
     df = df.astype( {'account_length':'string',
                 'number_vmail_messages':'string',
