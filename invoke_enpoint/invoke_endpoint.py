@@ -51,7 +51,6 @@ def predict_tabular_classification_sample(
     predictions = response.predictions
     for prediction in predictions:
         print(" prediction:", dict(prediction))
-    return predictions
 
 
 # [END aiplatform_predict_tabular_classification_sample]
@@ -66,36 +65,3 @@ predict_tabular_classification_sample(
 )
 """
 
-if __name__ == "__main__":
-    import json, sys
-    from pathlib import Path 
-    import pandas as pd
-    csv_path =  Path(sys.argv[1])
-    # TODO - If the input is json and not csv #Pass all as string
-    if str(csv_path).endswith('.csv'):
-        df = pd.read_csv(csv_path, nrows=1)
-        df = df.astype( {'account_length':'string',
-                    'number_vmail_messages':'string',
-                     'total_day_calls':'string',
-                     'number_customer_service_calls':'string',
-                    'total_day_minutes':'string',
-                    'total_eve_calls':'string',
-                    'total_day_charge': 'string',
-                    'total_eve_minutes':'string',
-                    'total_eve_charge':'string',
-                    'total_night_minutes':'string',
-                    'total_night_calls':'string',
-                     'total_night_charge':'string',
-                     'total_intl_minutes':'string',
-                     'total_intl_calls':'string',
-                     'total_intl_charge':'string'
-                    } )
-        dicts = df.to_dict('records')
-    
-    result = predict_tabular_classification_sample(
-    project="189737161361",
-    endpoint_id="3676841650073632768",
-    location="us-central1",
-    instance_dict=dicts[0]
-    )
-    
