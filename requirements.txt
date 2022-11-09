@@ -1,0 +1,12 @@
+tensorflow==2.9.1
+argparse
+pandas
+google-api-core==2.10.2
+google-auth==2.14.0
+google-auth-oauthlib==0.4.4
+google-cloud-aiplatform==1.18.3
+google-cloud-bigquery==2.34.4
+google-cloud-core==2.3.2
+google-cloud-pubsub==2.13.10
+google-cloud-resource-manager==1.6.3
+google-cloud-storage==2.5.0

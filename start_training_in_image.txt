@@ -1,0 +1,15 @@
+docker tag us-docker.pkg.dev/google-samples/containers/gke/batch-ml-workload:latest \
+us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/batch-ml-workload:latest
+
+
+docker push us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/batch-ml-workload:latest
+
+docker pull us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/quickstart-image:tag1
+
+
+
+gcloud ai custom-jobs local-run \
+  --executor-image-uri=us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/batch-ml-workload:latest \
+  --local-package-path=training \
+  --script=training/model.py \
+  --output-image-uri=output_image

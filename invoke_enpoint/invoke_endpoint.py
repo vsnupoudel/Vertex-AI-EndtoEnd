@@ -28,6 +28,15 @@ def predict_tabular_classification_sample(
     location: str = "us-central1",
     api_endpoint: str = "us-central1-aiplatform.googleapis.com",
 ):
+    """
+sample function call below:
+predict_tabular_classification_sample(
+    project="189737161361",
+    endpoint_id="3676841650073632768",
+    location="us-central1",
+    instances=[{ "feature_column_a": "value", "feature_column_b": "value" ...}, {...}]
+)
+"""
     # The AI Platform services require regional API endpoints.
     client_options = {"api_endpoint": api_endpoint}
     # Initialize client that will be used to create and send requests.
@@ -55,13 +64,5 @@ def predict_tabular_classification_sample(
 
 # [END aiplatform_predict_tabular_classification_sample]
 
-"""
-sample function call below:
-predict_tabular_classification_sample(
-    project="189737161361",
-    endpoint_id="3676841650073632768",
-    location="us-central1",
-    instances=[{ "feature_column_a": "value", "feature_column_b": "value" ...}, {...}]
-)
-"""
+
 
