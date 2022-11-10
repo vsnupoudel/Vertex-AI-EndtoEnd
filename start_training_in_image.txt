@@ -11,5 +11,19 @@ docker pull us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-r
 gcloud ai custom-jobs local-run \
   --executor-image-uri=us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/batch-ml-workload:latest \
   --local-package-path=training \
-  --script=training/model.py \
-  --output-image-uri=output_image
+  --script=task.py \
+  --output-image-uri=us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/tf-keras:v1 \
+  
+  
+  
+# Specifies base image and tag
+FROM us-central1-docker.pkg.dev/starry-embassy-363916/quickstart-docker-repo/batch-ml-workload:latest
+WORKDIR /training
+
+# Installs additional packages
+COPY ./training /training
+WORKDIR /training
+RUN pip install -r requirements.txt
+
+# Sets up the entry point to invoke the trainer.
+ENTRYPOINT ["python", "task.py"]
